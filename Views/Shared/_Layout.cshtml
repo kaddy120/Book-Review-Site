@@ -7,6 +7,25 @@
 </head>
 <body>
     <div>
+        <div>
+            <a asp-action="Index" asp-controller="Home">Home</a>
+        </div>
+            @if (User.Identity.IsAuthenticated)
+            {
+                <div>
+                    <a asp-action="Logout" asp-controller="Account">Logout</a>
+                </div>
+            }
+            else
+            {
+                <div>
+                    <a asp-action="Register" asp-controller="Account">Register</a>
+                    <a asp-action="Login" asp-controller="Account">Login</a>
+                </div>
+            }
+    </div>
+    
+    <div>
         @RenderBody()
     </div>
     <div>

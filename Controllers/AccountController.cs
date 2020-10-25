@@ -34,6 +34,11 @@ namespace Books.Controllers
             //_emailSender = emailSender;
             //_logger = loggerFactory.CreateLogger<AccountController>();
         }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public IActionResult Register() => View();
+
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -61,6 +66,10 @@ namespace Books.Controllers
             // If we got this far, something failed, redisplay form
             return View(model);
         }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public IActionResult Login() => View();
 
         [HttpPost]
         [AllowAnonymous]
