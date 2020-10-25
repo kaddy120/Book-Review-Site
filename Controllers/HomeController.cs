@@ -30,9 +30,9 @@ namespace Books.Controllers
             return View(Book);
         }
         [HttpGet]
-        public async Task<IActionResult> Review()
+        public async Task<IActionResult> Review(string Isbn)
         {
-            var reviewDTO = new ReviewViewModel { };
+            var reviewDTO = new ReviewViewModel { Isbn = Isbn };
             return View(reviewDTO);
         }
 

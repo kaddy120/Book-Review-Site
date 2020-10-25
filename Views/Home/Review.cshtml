@@ -3,11 +3,24 @@
 @{
     ViewData["Title"] = "Review";
 }
+<link href="~/Lib/Trumbowyg-master/dist/ui/trumbowyg.min.css" rel="stylesheet" />
+<h4>Add A Review</h4>
+<div>
+    <form  asp-controller="Home" asp-action="Review" method="post">
+        @*<input type="hidden" asp-for="Isbn" value="@Model.Isbn" />
+        <input type="hidden" asp-for="UserId" value="123" />
+        <input type="range" asp-for="Rating" value="" /><br />*@
+        <label>Comment</label><br />
+        <textarea asp-for="Comment" id="Editor" rows="4" cols="50"></textarea><br />
+        <button type="submit">Submit</button>
+    </form>
+</div>
 
-<form action="/Review" method="post">
-    <input type="text" name="Isbn" value="@Model.Isbn" />
-    <input type="number" name="UserId" value="@Model.UserId" />
-    <input type="range" name="Rating" value="" />
-    <textarea type="text" name="Comment" value="" />
-    <button type="submit">Submit</button>
-</form>
+
+@section scripts{
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="~/Lib/Trumbowyg-master/dist/trumbowyg.min.js"></script>
+    <script>
+        $('#Editor').trumbowyg();
+    </script>
+}

@@ -41,7 +41,7 @@
 </div>
 @*i need to add comment list here, and also do pagination*@
 <div>
-<form  action="/Home/Review" method="post">
+@*<form  action="/Home/Review" method="post">
     <input type="hidden" name="Isbn" value="@Model.Isbn" />
     <input type="hidden" name="UserId" value="123" />
     <label>Rating</label>
@@ -49,6 +49,10 @@
     <label>Review Section</label><br />
     <textarea name="Comment" rows="4" cols="50"></textarea><br />
     <button type="submit">Submit</button>
-</form></div>
+</form></div>  
+    *@
+  <div>
+    <a asp-action="Review" asp-route-Isbn ="@Model.Isbn">Add Review</a> 
+  </div>  
 
 </html>
