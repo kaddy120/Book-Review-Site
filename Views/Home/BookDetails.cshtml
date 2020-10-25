@@ -1,0 +1,54 @@
+﻿@model Books.Database.Book
+
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+<!DOCTYPE html>
+<html>
+<div>
+    <img src="@Model.ThumbnailUrl" width="150"/>
+</div>
+<div>
+    <h2>@Model.Title</h2>
+    <h4>By @Model.Authour</h4>
+    @{
+        int? Ratings = 0;
+        int? netRating = 0;
+        if(Model.Reviews!=null)
+        {
+            int count = Model.Reviews.Count();
+            foreach (var review in Model.Reviews)
+            {
+                Ratings += review.Rating;
+            }
+            if (Ratings != null)
+            {
+                netRating = Ratings / count;
+            }
+        }
+
+     }
+    <p>ratings @netRating   </p>
+    <p>
+        Katie is driving to work one beautiful day when a dead man jumps
+        into her car and tries to eat her.  That same morning, Jenni opens a bedroom 
+        door to find her husband devouring their toddler son.
+    </p>
+    <div>
+        <p>Release year @Model.Year</p>
+    </div>
+</div>
+@*i need to add comment list here, and also do pagination*@
+<div>
+<form  action="/Home/Review" method="post">
+    <input type="hidden" name="Isbn" value="@Model.Isbn" />
+    <input type="hidden" name="UserId" value="123" />
+    <label>Rating</label>
+    <input type="range" name="Rating" value="" /><br />
+    <label>Review Section</label><br />
+    <textarea name="Comment" rows="4" cols="50"></textarea><br />
+    <button type="submit">Submit</button>
+</form></div>
+
+</html>

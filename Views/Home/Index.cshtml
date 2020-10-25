@@ -1,0 +1,22 @@
+﻿@model IEnumerable<Books.Database.Book>
+
+@{
+    ViewData["Title"] = "Index";
+}
+    <!DOCTYPE html>
+<html>
+
+<h2>Book List</h2>
+
+ <div>@{ 
+    foreach(var Book in Model)
+    {
+        <div>
+         <a asp-action="BookDetails" asp-route-Isbn="@Book.Isbn">
+            <img src="@Book.ThumbnailUrl" alt="Sample Photo" width="85" /></a>
+        </div>
+    }
+}
+ </div>
+
+</html>

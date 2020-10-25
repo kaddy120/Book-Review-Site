@@ -1,0 +1,13 @@
+﻿@model Books.Database.Models.ReviewViewModel;
+
+@{
+    ViewData["Title"] = "Review";
+}
+
+<form action="/Review" method="post">
+    <input type="text" name="Isbn" value="@Model.Isbn" />
+    <input type="number" name="UserId" value="@Model.UserId" />
+    <input type="range" name="Rating" value="" />
+    <textarea type="text" name="Comment" value="" />
+    <button type="submit">Submit</button>
+</form>
