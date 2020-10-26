@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace Books.Database.Models
 {
-    public class ReviewViewModel
+    public class BookDetailsViewModel
     {
-        public int Rating { get; set; }
-        public string Comment { get; set; }
-        public string Name { get; set; }
+        public Book Book { get; set; }
+        public IEnumerable<ReviewViewModel> Reviews { get; set; }
     }
 }

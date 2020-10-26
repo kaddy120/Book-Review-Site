@@ -26,18 +26,23 @@ namespace Books.Controllers
 
         public async Task<IActionResult> BookDetails(string Isbn)
         {
+            var model = new BookDetailsViewModel
+            {
+                Book = Repo.GetBook(Isbn).GetAwaiter().GetResult()
+            };
+            model.Reviews = await ;
             var Book = await Repo.GetBook(Isbn);
             return View(Book);
         }
         [HttpGet]
         public async Task<IActionResult> Review(string Isbn)
         {
-            var reviewDTO = new ReviewViewModel { Isbn = Isbn };
+            var reviewDTO = new AddReviewViewModel { Isbn = Isbn };
             return View(reviewDTO);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Review(ReviewViewModel review)
+        public async Task<IActionResult> Review(AddReviewViewModel review)
         {
             if (ModelState.IsValid)
             {

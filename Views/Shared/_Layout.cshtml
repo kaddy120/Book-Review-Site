@@ -1,4 +1,8 @@
 ﻿<!DOCTYPE html>
+@using Microsoft.AspNetCore.Identity
+@using Books.Database
+@inject SignInManager<User> SignManager_
+@inject UserManager<User> UserManager_
 
 <html>
 <head>
@@ -10,26 +14,26 @@
         <div>
             <a asp-action="Index" asp-controller="Home">Home</a>
         </div>
-            @if (User.Identity.IsAuthenticated)
-            {
-                <div>
-                    <a asp-action="Logout" asp-controller="Account">Logout</a>
-                </div>
-            }
-            else
-            {
-                <div>
-                    <a asp-action="Register" asp-controller="Account">Register</a>
-                    <a asp-action="Login" asp-controller="Account">Login</a>
-                </div>
-            }
+        @if (SignManager_.IsSignedIn(User))
+        {
+            <form asp-area="" asp-controller="Account" asp-action="LogOut" method="post" id="logoutForm" class="navbar-right">
+                <button type="submit">Log out</button>
+            </form>
+        }
+        else
+        {
+            <div>
+                <a asp-action="Register" asp-controller="Account">Register</a>
+                <a asp-action="Login" asp-controller="Account">Login</a>
+            </div>
+        }
     </div>
-    
+
     <div>
         @RenderBody()
     </div>
     <div>
-        @RenderSection("scripts",false)
+        @RenderSection("scripts", false)
     </div>
 </body>
 </html>
