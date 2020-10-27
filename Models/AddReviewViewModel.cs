@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Books.Database.Models
+namespace Books.Models
 {
     public class AddReviewViewModel
     {

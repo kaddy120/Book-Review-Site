@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Books.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -26,6 +27,10 @@ namespace Books.Database
             //    C => C.Split(',', StringSplitOptions.RemoveEmptyEntries));
 
             //Debugger.Launch();
+            modelBuilder.Entity<Review>()
+                .HasKey(c => new { c.UserId, c.Isbn })
+                .HasName("ReviewId");
+
             var Books_ = this.booksSeeding.ReadFromFile().GetAwaiter().GetResult().ToArray();
             
             modelBuilder.Entity<Book>().HasData(Books_);

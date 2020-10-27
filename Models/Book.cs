@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Books.Database
+namespace Books.Models
 {
     public class Book
     {
@@ -16,7 +16,7 @@ namespace Books.Database
         public string Authour { get; set; } = "";
         public string Year { get; set; } = "";
         public string? ThumbnailUrl { get; set; }
-        public ICollection<Review>? Reviews { get; set; }
+        public ICollection<Review> Reviews { get; set; }
         //public string[]? Category { get; set; } = { "" };
 
     }

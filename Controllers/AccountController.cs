@@ -1,5 +1,5 @@
 ﻿using Books.Database;
-using Books.Database.Models;
+using Books.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;

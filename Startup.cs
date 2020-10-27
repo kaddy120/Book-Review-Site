@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Books.Data;
 using Microsoft.AspNetCore.Identity;
+using Books.Models;
 
 namespace Books
 {

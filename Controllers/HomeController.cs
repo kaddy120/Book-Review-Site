@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Books.Data;
 using Books.Database;
-using Books.Database.Models;
+using Books.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 

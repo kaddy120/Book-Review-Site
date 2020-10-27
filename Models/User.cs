@@ -8,12 +8,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Books.Database
+namespace Books.Models
 {
     public class User : IdentityUser
     {
         [PersonalData]
         public string Name { get; set; }
-        //public List<Review> Review { get; set; }
+        public ICollection<Review> Reviews { get; set; }
     }
 }

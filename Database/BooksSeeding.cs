@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Net.Http;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json.Linq;
+using Books.Models;
 
 namespace Books.Database
 {

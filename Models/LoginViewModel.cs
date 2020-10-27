@@ -6,9 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Books.Database.Models
+namespace Books.Models
 {
-    public class RegisterViewModel
+    public class LoginViewModel
     {
         [Required]
         [PasswordPropertyText]
@@ -18,8 +18,6 @@ namespace Books.Database.Models
         [EmailAddress]
         public string Email { get; set; }
 
-        [StringLength(60)]
-        public string Name { get; set; }
-
+        public bool RememberMe { get; set; }
     }
 }
