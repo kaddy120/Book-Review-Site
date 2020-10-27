@@ -18,9 +18,10 @@ namespace Books.Data
             Context = context;
         }
 
-        public Task AddComment()
+        public async Task AddReview(Review review)
         {
-            throw new NotImplementedException();
+            await Context.AddAsync(review);
+            Context.SaveChanges();
         }
 
         public Task DeleteReview(int ReviewId)
@@ -44,8 +45,7 @@ namespace Books.Data
             new ReviewViewModel
             {
                 Comment = b.Comment,
-                //this is only temperary
-                Rating = b.Rating == null ? 0 : 5
+                Rating = b.Rating
             }).ToListAsync<ReviewViewModel>();
         }
 

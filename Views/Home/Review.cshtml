@@ -1,4 +1,6 @@
 ﻿@model Books.Models.AddReviewViewModel;
+@using Books.Models
+
 
 @{
     ViewData["Title"] = "Review";
@@ -7,9 +9,8 @@
 <h4>Add A Review</h4>
 <div>
     <form  asp-controller="Home" asp-action="Review" method="post">
-        @*<input type="hidden" asp-for="Isbn" value="@Model.Isbn" />
-        <input type="hidden" asp-for="UserId" value="123" />
-        <input type="range" asp-for="Rating" value="" /><br />*@
+        <input type="hidden" asp-for="Isbn" value="@Model.Isbn" />
+        <input type="range" asp-for="Rating" value="" /><br />
         <label>Comment</label><br />
         <textarea asp-for="Comment" id="Editor" rows="4" cols="50"></textarea><br />
         <button type="submit">Submit</button>

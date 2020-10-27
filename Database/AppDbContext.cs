@@ -28,7 +28,7 @@ namespace Books.Database
 
             //Debugger.Launch();
             modelBuilder.Entity<Review>()
-                .HasKey(c => new { c.UserId, c.Isbn })
+                .HasKey(c => new { c.Id, c.Isbn })
                 .HasName("ReviewId");
 
             var Books_ = this.booksSeeding.ReadFromFile().GetAwaiter().GetResult().ToArray();

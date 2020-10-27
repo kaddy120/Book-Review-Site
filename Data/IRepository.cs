@@ -12,9 +12,9 @@ namespace Books.Data
         public Task<IEnumerable<Book>> GetBooks();
         public Task<Book> GetBook(string Isbn);
         //any of books property will do i think
-        public Task<IEnumerable<Review>> GetReviews(string Isbn);
         public Task<IEnumerable<ReviewViewModel>> GetReviewDTO(string Isbn);
-        public Task AddComment();
+        public Task AddReview(Review rivew);
+        public Task<IEnumerable<Review>> GetReviews(string Isbn);
         public Task DeleteReview(int ReviewId);
         public Task EditReview(Review review);
     }

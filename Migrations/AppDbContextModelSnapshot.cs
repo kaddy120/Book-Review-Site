@@ -47,7 +47,7 @@ namespace Books.Migrations
 
             modelBuilder.Entity("Books.Models.Review", b =>
                 {
-                    b.Property<int>("UserId");
+                    b.Property<string>("Id");
 
                     b.Property<string>("Isbn");
 
@@ -55,14 +55,10 @@ namespace Books.Migrations
 
                     b.Property<int>("Rating");
 
-                    b.Property<string>("UserId1");
-
-                    b.HasKey("UserId", "Isbn")
+                    b.HasKey("Id", "Isbn")
                         .HasName("ReviewId");
 
                     b.HasIndex("Isbn");
-
-                    b.HasIndex("UserId1");
 
                     b.ToTable("Reviews");
                 });
@@ -232,14 +228,15 @@ namespace Books.Migrations
 
             modelBuilder.Entity("Books.Models.Review", b =>
                 {
+                    b.HasOne("Books.Models.User", "User")
+                        .WithMany("Reviews")
+                        .HasForeignKey("Id")
+                        .OnDelete(DeleteBehavior.Cascade);
+
                     b.HasOne("Books.Models.Book", "Book")
                         .WithMany("Reviews")
                         .HasForeignKey("Isbn")
                         .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("Books.Models.User", "User")
-                        .WithMany("Reviews")
-                        .HasForeignKey("UserId1");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

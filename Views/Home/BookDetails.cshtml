@@ -13,19 +13,16 @@
     <h2>@Model.Book.Title</h2>
     <h4>By @Model.Book.Authour</h4>
     @{
-        int? Ratings = 0;
-        int? netRating = 0;
-        if(Model.Reviews!=null)
+        int Ratings = 0;
+        int netRating = 0;
+        if(Model.Reviews.Count()!=0)
         {
             int count = Model.Reviews.Count();
             foreach (var review in Model.Reviews)
             {
                 Ratings += review.Rating;
             }
-            if (Ratings != null)
-            {
                 netRating = Ratings / count;
-            }
         }
 
      }

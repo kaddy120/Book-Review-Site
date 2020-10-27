@@ -13,7 +13,5 @@ namespace Books.Models
         public string Comment { get; set; }
         [Required]
         public string Isbn { get; set; }
-        [Required]
-        public int UserId { get; set; }
     }
 }
