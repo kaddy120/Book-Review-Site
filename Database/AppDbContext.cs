@@ -18,6 +18,7 @@ namespace Books.Database
         }
 
         public DbSet<Book> Books { get; set; }
+        public DbSet<Review> Reviews { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

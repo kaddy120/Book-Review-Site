@@ -1,4 +1,5 @@
 ﻿using Books.Database;
+using Books.Database.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -35,6 +36,17 @@ namespace Books.Data
         public async Task<Book> GetBook(string Isbn)
         {
             return await Context.Books.FindAsync(Isbn);
+        }
+
+        public async Task<IEnumerable<ReviewViewModel>> GetReviewDTO(string Isbn)
+        {
+            return await Context.Reviews.Where(r=>r.Isbn==Isbn).Select(b =>
+            new ReviewViewModel
+            {
+                Comment = b.Comment,
+                //this is only temperary
+                Rating = b.Rating == null ? 0 : 5
+            }).ToListAsync<ReviewViewModel>();
         }
 
         public async Task<IEnumerable<Book>> GetBooks()

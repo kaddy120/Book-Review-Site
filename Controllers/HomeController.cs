@@ -28,11 +28,11 @@ namespace Books.Controllers
         {
             var model = new BookDetailsViewModel
             {
-                Book = Repo.GetBook(Isbn).GetAwaiter().GetResult()
+                Book = Repo.GetBook(Isbn).GetAwaiter().GetResult(),
+                Reviews = Repo.GetReviewDTO(Isbn).GetAwaiter().GetResult()
             };
-            model.Reviews = await ;
-            var Book = await Repo.GetBook(Isbn);
-            return View(Book);
+            //var Book = await Repo.GetBook(Isbn);
+            return View(model);
         }
         [HttpGet]
         public async Task<IActionResult> Review(string Isbn)

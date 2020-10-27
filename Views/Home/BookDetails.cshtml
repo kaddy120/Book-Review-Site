@@ -1,17 +1,17 @@
-﻿@model Books.Database.Book
+﻿@model Books.Database.Models.BookDetailsViewModel
 
 @{
-    ViewData["Title"] = Model.Title;
+    ViewData["Title"] = Model.Book.Title;
 }
 
 <!DOCTYPE html>
 <html>
 <div>
-    <img src="@Model.ThumbnailUrl" width="150"/>
+    <img src="@Model.Book.ThumbnailUrl" width="150"/>
 </div>
 <div>
-    <h2>@Model.Title</h2>
-    <h4>By @Model.Authour</h4>
+    <h2>@Model.Book.Title</h2>
+    <h4>By @Model.Book.Authour</h4>
     @{
         int? Ratings = 0;
         int? netRating = 0;
@@ -36,13 +36,13 @@
         door to find her husband devouring their toddler son.
     </p>
     <div>
-        <p>Release year @Model.Year</p>
+        <p>Release year @Model.Book.Year</p>
     </div>
 </div>
 @*i need to add comment list here, and also do pagination*@
 
   <div>
-    <a asp-action="Review" asp-route-Isbn ="@Model.Isbn">Add Review</a> 
+    <a asp-action="Review" asp-route-Isbn ="@Model.Book.Isbn">Add Review</a> 
   </div>  
 <ul>
 

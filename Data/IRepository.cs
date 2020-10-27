@@ -1,4 +1,5 @@
 ﻿using Books.Database;
+using Books.Database.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,7 @@ namespace Books.Data
         public Task<Book> GetBook(string Isbn);
         //any of books property will do i think
         public Task<IEnumerable<Review>> GetReviews(string Isbn);
+        public Task<IEnumerable<ReviewViewModel>> GetReviewDTO(string Isbn);
         public Task AddComment();
         public Task DeleteReview(int ReviewId);
         public Task EditReview(Review review);
