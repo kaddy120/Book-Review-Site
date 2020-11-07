@@ -8,6 +8,8 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
+
+    <link href="~/Lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
 </head>
 <body>
     <div>
@@ -32,8 +34,16 @@
     <div>
         @RenderBody()
     </div>
+    <environment names="Development">
+        <script src="~/Lib/bootstrap/js/bootstrap.js"></script>
+    </environment>
+    <environment names="Development">
+        <script src="~/Lib/bootstrap/js/bootstrap.min.js"></script>
+    </environment>
     <div>
         @RenderSection("scripts", false)
     </div>
+
+
 </body>
 </html>
