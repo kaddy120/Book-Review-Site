@@ -28,7 +28,7 @@ namespace Books.BookServices.QueryObjects
                 case FilterBy.Year:
                     return books.Where(b => b.YearPublished == int.Parse(filterValue));
                 case FilterBy.StarRating:
-                    return books.Where(b => b.YearPublished == int.Parse(filterValue));
+                    return books.Where(b => b.Star >= int.Parse(filterValue));
                 case FilterBy.Genres:
                     return books.Where(b => b.YearPublished == int.Parse(filterValue));
                 default:
