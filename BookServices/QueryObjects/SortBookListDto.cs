@@ -6,8 +6,19 @@ using System.Threading.Tasks;
 
 namespace Books.BookServices.QueryObjects
 {
+    public enum SortBy
+    {
+        SimpleSort = 0,
+        YearAscending,
+        YearDescending,
+        StarRatingAscending,
+        StarDescending,
+        NumberOfReviewAscending,
+        NumberOfReviewDescinding,
+    }
+
     public class SortBookListDto
     {
-        
+      
     }
 }
