@@ -1,24 +1,37 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Books.BookServices.QueryObjects
 {
-    public enum SortBy
+    public enum SortBooksBy
     {
+
         SimpleSort = 0,
-        YearAscending,
-        YearDescending,
-        StarRatingAscending,
-        StarDescending,
-        NumberOfReviewAscending,
-        NumberOfReviewDescinding,
+        Year,
+        StarRating,
+        //NumberOfReviewAscending,
+        //NumberOfReviewDescinding,
     }
 
-    public class SortBookListDto
+    public static class SortBookListDto
     {
+        public static IQueryable<BookListDTO> SortBooks(
+            this IQueryable<BookListDTO> books
+            ,SortBooksBy sortOption)
+        {
+            switch (sortOption)
+            {
+                case SortBooksBy.SimpleSort:
+                    return books;
+                case SortBooksBy.Year:
+                    return books.OrderByDescending(b => b.YearPublished);
+                case SortBooksBy.StarRating:
+                    return books.OrderByDescending(b => b.Star);
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(sortOption),sortOption, null );
+            }
+
+        }
       
     }
 }

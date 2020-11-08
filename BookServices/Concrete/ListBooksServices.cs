@@ -1,11 +1,8 @@
 ﻿using Books.BookServices.QueryObjects;
 using Books.Database;
+using Microsoft.CodeAnalysis.Options;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Books.BookServices.Concrete
 {
@@ -23,8 +20,9 @@ namespace Books.BookServices.Concrete
             var books = context.Books.
                 Include(b => b.Reviews)
                 .BooListDtoMap()
-                .FilterBookList(options.FilterBy, options.FilterValue);
-            //I still need to add sorting
+                .FilterBookList(options.FilterBy, options.FilterValue)
+                .SortBooks(options.OrderByOptions);
+            
             options.SetupRestOfDto(books);
             
             return books

@@ -12,7 +12,7 @@ namespace Books.BookServices
 
         private int _pageSize = DefaultPageSize;
 
-        public SortBy OrderByOptions { get; set; }
+        public SortBooksBy OrderByOptions { get; set; }
 
         public FilterBy FilterBy { get; set; }
 
