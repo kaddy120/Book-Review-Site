@@ -14,6 +14,7 @@
         <div>
          <a asp-action="BookDetails" asp-route-Isbn="@Book.Isbn">
             <img src="@Book.ThumbnailUrl" alt="Sample Photo" width="85" /></a>
+            <span class="BookTitle">@Book.Title</span>
         </div>
     }
 }
