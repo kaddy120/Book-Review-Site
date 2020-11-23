@@ -42,7 +42,16 @@
     <a asp-action="Review" asp-route-Isbn ="@Model.Book.Isbn">Add Review</a> 
   </div>  
 <ul>
+    @foreach(var review in Model.Reviews)
+    {
+        <div class="review">
+            <li>
+                    @review.Comment;     
+            </li>
 
+        </div>
+
+    }
 </ul>
 
 </html>

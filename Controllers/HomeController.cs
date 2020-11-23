@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Books.Data;
 using Books.Database;
 using Books.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
@@ -19,7 +20,9 @@ namespace Books.Controllers
         private readonly IRepository Repo;
         private readonly UserManager<User> _userManager;
 
-        public HomeController(IRepository repository, UserManager<User> userManager)
+        public HomeController(
+            IRepository repository,
+            UserManager<User> userManager)
         {
             Repo = repository;
             _userManager = userManager;
@@ -33,6 +36,8 @@ namespace Books.Controllers
 
         public async Task<IActionResult> BookDetails(string Isbn)
         {
+            //this is so wrong, i should have a 
+            //function that maps BookDetaails using select and include reviews
             var model = new BookDetailsViewModel
             {
                 Book = Repo.GetBook(Isbn).GetAwaiter().GetResult(),
@@ -41,7 +46,9 @@ namespace Books.Controllers
             //var Book = await Repo.GetBook(Isbn);
             return View(model);
         }
+
         [HttpGet]
+        [Authorize]
         public async Task<IActionResult> Review(string Isbn)
         {
             var reviewDTO = new AddReviewViewModel { Isbn = Isbn };
@@ -49,6 +56,7 @@ namespace Books.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> Review(AddReviewViewModel review)
         {
             

@@ -30,8 +30,6 @@ namespace Books.BookServices.QueryObjects
                 default:
                     throw new ArgumentOutOfRangeException(nameof(sortOption),sortOption, null );
             }
-
-        }
-      
+        }    
     }
 }
